@@ -1,72 +1,20 @@
-<!doctype html>
-<html lang="zh-cmn-Hans">
+<!DOCTYPE html>
+<html lang="zh-hans">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" />
-    <meta name="renderer" content="webkit" />
-    <meta name="force-rendering" content="webkit" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-    <title>XAECLOUD STUDIO</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/favicons.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="./fonts/fonts.css" />
-    <link rel="stylesheet" href="./css/color_dark.css" id="html_color" />
-    <link rel="stylesheet" href="./css/xeui.css" />
-    <link rel="stylesheet" href="./css/module.css" />
-    <script src="./js/lib.js"></script>
-    <script src="./js/xaecloud.js"></script>
+    <script type="module" src="/assets/jquery.min.js"></script>
+  <script type="module" crossorigin src="/assets/index.b208276d.js"></script>
+  <link rel="stylesheet" href="/assets/index.f323db8a.css">
 </head>
 
-<body class="">
-    <nav class="xe_top">
-        <div class="xe_nav">
-            <div class="xe_nav-user">
-                <img src="./img/user/default.png">
-            </div>
-            <div class="xe_nav-title">
-                XAECLOUD STUDIO
-            </div>
-            <form class="xe_nav-search" onsubmit="return false">
-                <button class="bi bi-search"></button>
-                <input placeholder="搜索" autocomplete="new-password">
-            </form>
-        </div>
-        <div class="xe_nav-tool">
-            <div class="xe_nav-tool-item active" onclick="top.location='//www.xaecloud.cn'">
-                主站
-            </div>
-            <div class="xe_nav-tool-item" onclick="top.location='//doc.xaecloud.cn'">
-                文档
-            </div>
-            <div class="xe_nav-tool-item" onclick="top.location='//community.xaecloud.cn'">
-                社区
-            </div>
-            <div class="xe_nav-tool-item" onclick="top.location='//blog.xaecloud.cn'">
-                博客
-            </div>
-        </div>
-        <div id="html_loading" class="xeapi-progress">
-            <div class="xeapi-progress-indeterminate"></div>
-        </div>
-    </nav>
-    <div id="html_infocard" class="xe_infoc">
-        <span style="font-size: 18px;">
-            <i class="bi bi-info-circle"></i>
-            <span id="html_infocard-text">加载中...</span>
-        </span>
-    </div>
-    <div class="xe_content xe_top-body">
-        <div id="html_page">
-        </div>
-        <div class="xe_card">
-            <div class="xe_layout-flex">
-                <div id="html_color-btn" class="xe_icon">
-                    <i class="bi bi-lightbulb-fill"></i>
-                </div>
-                <div class="xe_icon"><i class="bi bi-github"></i></div>
-            </div>
-        </div>
-    </div>
+<body>
+    <div id="app"></div>
+    
 </body>
 
 </html>
