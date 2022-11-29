@@ -1,0 +1,143 @@
+<div class="xew-card_login">
+    <div class="xew-card_login-content">
+        <div id="lg_card" class="xew-card_login-title">
+            <img height="100%" src="./assets/images/light_logo.png">
+            <div>登录</div>
+        </div>
+        <form onsubmit="return false;">
+            <div id="lg_user" class="xew-card_login-input">
+                <label>手机号/邮箱</label>
+                <input type="text">
+                <div style="font-size: 12px;color: #ff0000;"></div>
+            </div>
+            <div id="lg_pass" class="xew-card_login-input">
+                <label>密码</label>
+                <input type="password">
+                <div style="font-size: 12px;color: #ff0000;"></div>
+            </div>
+            <div class="xew-card_login-btng">
+                <button id="inplogin" class="xew-card_login-btn">登录</button>
+                <div id="goreg" class="xew-card_login-btn">去注册</div>
+            </div>
+        </form>
+    </div>
+    <div id="reg_card" class="xew-card_login-content" style="display:none;">
+        <div class="xew-card_login-title">
+            <img height="100%" src="./assets/images/light_logo.png">
+            <div>注册</div>
+        </div>
+        <form onsubmit="return false;">
+            <div id="reg_user" class="xew-card_login-input">
+                <label>邮箱</label>
+                <input type="email" autocomplete="off">
+                <div style="font-size: 12px;color: #ff0000;"></div>
+            </div>
+            <div id="reg_pass" class="xew-card_login-input">
+                <label>密码</label>
+                <input type="password" autocomplete="new-password">
+                <div style="font-size: 12px;color: #ff0000;"></div>
+            </div>
+            <div id="reg_pw" class="xew-card_login-input">
+                <label>再次输入密码</label>
+                <input type="password" autocomplete="new-password">
+                <div style="font-size: 12px;color: #ff0000;"></div>
+            </div>
+            <div class="xew-card_login-btng">
+                <button id="inpreg" class="xew-card_login-btn">注册</button>
+                <div id="gologin" class="xew-card_login-btn">去登录</div>
+            </div>
+        </form>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#goreg").click(function (e) {
+            $("#lg_card").hide();
+            $("#reg_card").show();
+        });
+        $("#gologin").click(function (e) {
+            $("#reg_card").hide();
+            $("#lg_card").show();
+        });
+        $("#inpreg").click(function (e) {
+            let UserName = $("#reg_user input").val();
+            let PassWord = $("#reg_pass input").val();
+            let Pw = $("#reg_pw input").val();
+            if (PassWord != Pw) {
+                $("#reg_pw div").text('两次密码不正确');
+            } else {
+                $.post(config.API.Account, {
+                    io: "auto_login",
+                    cio: "reg",
+                    UserName: UserName,
+                    PassWord: Pw,
+                    uuid: sys.xel_account.account.User_uuid
+                }, function (data) {
+                    let obj = JSON.parse(data);
+                    switch (obj.Account.Return) {
+                        case "RegPass":
+                            $.post(config.API.Account, {
+                                io: "auto_login",
+                                UserName: UserName,
+                                PassWord: PassWord,
+                                uuid: sys.xel_account.account.User_uuid
+                            }, function (data) {
+                                let obj = JSON.parse(data);
+                                switch (obj.Account.Return) {
+                                    case "LgPass":
+                                        location.reload();
+                                        break;
+                                    case "LgE":
+                                        $("#lg_pass div").text('账号或密码不正确');
+                                        break;
+                                    default:
+                                        console.warn(obj.Account.Return);
+                                }
+                            });
+                            break;
+                        case "RegE":
+                            switch (obj.Account.Info) {
+                                case "Email":
+                                    $("#reg_user div").text('邮箱格式不正确');
+                                    break;
+                                case "EmailFull":
+                                    $("#reg_user div").text('邮箱已被使用');
+                                    break;
+                                case "Pw":
+                                    $("#reg_pass div").text('密码必须由6-28位的数字、26个英文字母或者下划线组成');
+                                    break;
+                                default:
+                                    console.warn(obj);
+                            }
+                            $("#lg_pass div").text('账号或密码不正确');
+                            break;
+                        default:
+                            console.warn(obj.Account.Return);
+                    }
+                });
+            }
+        });
+        $("#inplogin").click(function (e) {
+            let UserName = $("#lg_user input").val();
+            let PassWord = $("#lg_pass input").val();
+            $.post(config.API.Account, {
+                io: "auto_login",
+                UserName: UserName,
+                PassWord: PassWord,
+                uuid: sys.xel_account.account.User_uuid
+            }, function (data) {
+                let obj = JSON.parse(data);
+                switch (obj.Account.Return) {
+                    case "LgPass":
+                        location.reload();
+                        break;
+                    case "LgE":
+                        $("#lg_pass div").text('账号或密码不正确');
+                        break;
+                    default:
+                        console.warn(obj.Account.Return);
+                }
+            });
+        });
+    });
+</script>

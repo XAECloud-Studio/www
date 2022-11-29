@@ -1,0 +1,101 @@
+/* Login */
+.xew-card_login {
+    z-index: 2048;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    background-color: #00000080;
+}
+
+.xew-card_login-content {
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    max-width: 600px;
+    max-height: 360px;
+    overflow-y: auto;
+    transform: translate(-50%, -50%);
+    position: fixed;
+    padding: 24px 8px;
+    border-radius: 6px;
+    box-shadow: 0px 0px 4px #00000080;
+    background-color: var(--color_bg);
+}
+
+.xew-card_login-title {
+    display: flex;
+    padding: 8px;
+    width: 100%;
+    height: 48px;
+    max-width: 280px;
+    margin: auto;
+    user-select: none;
+}
+
+.xew-card_login-title div {
+    flex: 1;
+    letter-spacing: 2px;
+    text-align: center;
+    font-size: 28px;
+    line-height: 28px;
+    padding: 0px;
+    margin: 6px 0px;
+    border-left: 2px solid var(--color_line);
+}
+
+.xew-card_login-input {
+    width: 100%;
+    text-align: left;
+    max-width: 240px;
+    margin: 6px auto;
+}
+
+.xew-card_login-input label {
+    line-height: 20px;
+    font-size: 16px;
+    display: block;
+    padding: 4px 0px;
+}
+
+.xew-card_login-input input {
+    outline: none;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 4px;
+    line-height: 20px;
+    border: 1px solid var(--color_line);
+}
+
+.xew-card_login-btng {
+    width: 100%;
+    padding: 4px;
+    text-align: center;
+    max-width: 240px;
+    margin: 6px auto;
+    display: flex;
+}
+button.xew-card_login-btn{
+    color: var(--color_main-text);
+    background-color: var(--color_main);
+}
+.xew-card_login-btn {
+    margin-right: 4px;
+    width: 80px;
+    user-select: none;
+    border-radius: 4px;
+    padding: 6px 4px;
+    line-height: 20px;
+    font-size: 16px;
+    border: none;
+}
+.xew-card_login-btn:hover{
+    background-color: #00000020;
+}
+button.xew-card_login-btn:hover{
+    filter: grayscale(40%);
+    background-color: var(--color_main);
+}

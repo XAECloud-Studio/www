@@ -1,0 +1,13 @@
+<div class="xew-gui_useritem">
+    <div class="xew-body_content">
+        <div id="useritem_nickname" class="item">#NickNameForLocalUser</div>
+        <div class="item r" onclick="sys.xel_account.account_logout();location.reload();">
+            登出
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#useritem_nickname").text(sys.xel_account.user_info.Account.NickName);
+    });
+</script>

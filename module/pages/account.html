@@ -1,0 +1,33 @@
+<div class="xew-body_navh">
+    <div class="xew-body_content">
+        <div class="xew-body_account">
+            <div style="position: relative;">
+                <div class="xew-body_account-head">
+                    <img src="./assets/images/fengmian/AWS9sVZCMbfR3VX50ZGHwkp6NiHEmfiL.jpg">
+                </div>
+                <div class="xew-body_account-info">
+                    <img src="./assets/images/default_icon.jpg">
+                    <div class="xew-body_account-info-card">
+                        <div id="xbaic_nickname"></div>
+                        <div id="xbaic_autograph"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="xew-body_account-body">
+                <div class="xew-body_account-body-menu">123</div>
+                <div class="xew-body_account-body-main">
+                    <div class="xew-body_account-body-btn"
+                        onclick="sys.xel_account.account_logout();location.reload();">
+                        登出
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#xbaic_nickname").text(sys.xel_account.user_info.Account.NickName);
+        $("#xbaic_autograph").text(sys.xel_account.user_info.Account.Autograph);
+    });
+</script>
