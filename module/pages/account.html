@@ -14,12 +14,15 @@
                 </div>
             </div>
             <div class="xew-body_account-body">
-                <div class="xew-body_account-body-menu">123</div>
-                <div class="xew-body_account-body-main">
-                    <div class="xew-body_account-body-btn"
-                        onclick="sys.xel_account.account_logout();location.reload();">
-                        登出
+                <div class="xew-body_account-body-menu">
+                    <div onclick="location.href='#main'">
+                        <div class="item">主页</div>
                     </div>
+                    <div onclick="location.href='#edit'">
+                        <div class="item">编辑</div>
+                    </div>
+                </div>
+                <div class="xew-body_account-body-main" id="account_body">
                 </div>
             </div>
         </div>
@@ -29,5 +32,23 @@
     $(document).ready(function () {
         $("#xbaic_nickname").text(sys.xel_account.user_info.Account.NickName);
         $("#xbaic_autograph").text(sys.xel_account.user_info.Account.Autograph);
+        account_bodyload();
+        $(window).bind('hashchange', function () {
+            account_bodyload();
+        });
     });
+    function account_bodyload() {
+        var hash = location.hash.substr(1);
+        switch (hash) {
+            case "edit":
+                url = "edit.html";
+                break;
+            default:
+                url = "main.html";
+                break;
+        }
+        $.get("./module/pages/account/" + url, function (data) {
+            $("#account_body").html(data);
+        });
+    }
 </script>

@@ -95,7 +95,7 @@
 
 /* Account */
 .xew-body_account {
-    margin-top: 26px;
+    margin-top: 12px;
     width: 100%;
     min-height: 80vh;
     border-radius: 6px;
@@ -174,7 +174,21 @@
     background-color: var(--color_bg);
 }
 
-.xew-body_account-body-main{
+.xew-body_account-body-menu div {
+    display: flex;
+}
+
+.xew-body_account-body-menu .item {
+    flex: 1;
+    padding: 12px 16px;
+    line-height: 20px;
+}
+
+.xew-body_account-body-menu .item:hover {
+    background-color: var(--color_bgh);
+}
+
+.xew-body_account-body-main {
     flex: 1;
     padding: 8px;
     margin-left: 8px;
@@ -183,7 +197,7 @@
     background-color: var(--color_bg);
 }
 
-.xew-body_account-body-btn{
+.xew-body_account-body-btn {
     display: inline-block;
     min-width: 80px;
     padding: 8px 8px;
@@ -193,12 +207,44 @@
     color: var(--color_main-text);
     background-color: var(--color_main);
 }
-.xew-body_account-body-btn:hover{
+
+.xew-body_account-body-btn:hover {
     filter: grayscale(25%);
     background-color: var(--color_main);
 }
+
 @media (max-width:599px) {
     .xew-body_account-body {
-        display: none;
+        display: block;
     }
+    .xew-body_account-body-menu{
+        max-width: calc(100% - 16px);
+        margin: 8px 0px;
+    }
+    .xew-body_account-body-main{
+        margin: 8px 0px;
+    }
+}
+
+.xew-body_account-body-input {
+    width: calc(100% - 16px);
+    max-width: 300px;
+    margin: 8px 0px;
+}
+
+.xew-body_account-body-input label {
+    line-height: 20px;
+    font-size: 16px;
+    display: block;
+    padding: 4px 0px;
+}
+
+.xew-body_account-body-input input {
+    outline: none;
+    display: block;
+    width: 100%;
+    border-radius: 4px;
+    padding: 6px 4px;
+    line-height: 20px;
+    border: 1px solid var(--color_line);
 }

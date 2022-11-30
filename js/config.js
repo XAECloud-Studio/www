@@ -9,8 +9,13 @@ var config = {
         // "Default": 'account.html',
         "Link-Type": "Auto"
     },
+    "System": {
+        "Retry_Count": 5
+    },
     "API": {
-        "Account": "https://account.io.xaecloud.cn/"
+        // "Account": "https://account.api.xaecloud.cn/",
+        "Account": "https://account.io.xaecloud.cn/",
+        "Link-Type": "Auto"
     },
     "Ping": ['https://account.io.xaecloud.cn/']
 }

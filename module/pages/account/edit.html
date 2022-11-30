@@ -1,0 +1,74 @@
+<div>
+    <div id="edit_nickname" class="xew-body_account-body-input">
+        <label>昵称</label>
+        <input>
+        <div class="edit_war" style="font-size: 12px;color: #ff0000;"></div>
+    </div>
+    <div id="edit_Autograph" class="xew-body_account-body-input">
+        <label>签名</label>
+        <input>
+        <div class="edit_war" style="font-size: 12px;color: #ff0000;"></div>
+    </div>
+    <div id="edit-input" class="xew-body_account-body-btn">
+        修改
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $("#edit_nickname input").val(sys.xel_account.user_info.Account.NickName);
+        $("#edit_Autograph input").val(sys.xel_account.user_info.Account.Autograph);
+        $("#edit-input").click(function (e) {
+            let lock = 1;
+            let NickName = $("#edit_nickname input").val();
+            let Autograph = $("#edit_Autograph input").val();
+            $(".edit_war").text("");
+            $.post(config.API.Account, {
+                io: "auto_edit",
+                uuid: sys.xel_account.account.User_uuid,
+                Update: 'NickName',
+                Updatec: NickName
+            }, function (data) {
+                let obj = JSON.parse(data);
+                switch (obj.Account.Return) {
+                    case "UpPass":
+                        break;
+                    case "NickE":
+                        lock = 0;
+                        $("#edit_nickname div").text('昵称至多10个汉字或20个字母,且不能输入“~*#@!<>$~()+,.{}&”');
+                        break;
+                    case "NickFull":
+                        lock = 0;
+                        $("#edit_nickname div").text('昵称被占用');
+                        break;
+                    default:
+                        lock = 0;
+                        $("#edit_nickname div").text('未知错误');
+                        break;
+                }
+            });
+            $.post(config.API.Account, {
+                io: "auto_edit",
+                uuid: sys.xel_account.account.User_uuid,
+                Update: 'Autograph',
+                Updatec: Autograph
+            }, function (data) {
+                let obj = JSON.parse(data);
+                switch (obj.Account.Return) {
+                    case "UpPass":
+                        break;
+                    case "AgE":
+                        lock = 0;
+                        $("#edit_nickname div").text('至多40个汉字');
+                        break;
+                    default:
+                        lock = 0;
+                        $("#edit_nickname div").text('未知错误');
+                        break;
+                }
+            });
+            if (lock == 1) {
+                location.reload();
+            }
+        });
+    });
+</script>
